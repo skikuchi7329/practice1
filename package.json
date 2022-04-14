@@ -1,0 +1,8 @@
+{
+  "name": "practice1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/skikuchi7329/practice1.git",
+  "author": "Shohei Kikuchi <killchance2256@gmail.com>",
+  "license": "MIT"
+}
