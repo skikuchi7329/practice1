@@ -20,6 +20,11 @@ let todoList = [
     id: uuid(),
     todo: 'hogehoge',
     status: TodoStatus.icebox
+  },
+  {
+    id: uuid(),
+    todo: 'aaaaaaa',
+    status: TodoStatus.icebox
   }
 ]
 // Read
@@ -41,6 +46,17 @@ app.post("/create", (req, res) => {
   res.json({status: "OK"})
 })
 
+//Update
+app.post("/status_update", (req, res) => { 
+  if (todoList.flatMap(i => i.id).includes(req.body.id)) {
+    const matchedIndex = todoList.findIndex((i) => i.id === req.body.id);
+    todoList[matchedIndex].status = todoList[matchedIndex].status ? TodoStatus.icebox : TodoStatus.done;
+    res.json({ status: "OK" });
+  } else {
+    console.log('not matched');
+  }
+})
+
 app.listen(port, () => {
-  console.log('Example app listening on port ${port}')
+  console.log(`Example app listening on port ${port}`)
 })
