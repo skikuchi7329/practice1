@@ -57,6 +57,16 @@ app.post("/status_update", (req, res) => {
   }
 })
 
+//Delete
+app.post("/delete", (req, res) => {
+  if (todoList.flatMap(i => i.id).includes(req.body.id)) {
+    todoList = todoList.filter((i) => i.id !== req.body.id);
+    res.json({status: "OK"});
+  } else {
+    res.status(406).send("Error: IDが一致しません")
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
