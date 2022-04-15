@@ -53,7 +53,7 @@ app.post("/status_update", (req, res) => {
     todoList[matchedIndex].status = todoList[matchedIndex].status ? TodoStatus.icebox : TodoStatus.done;
     res.json({ status: "OK" });
   } else {
-    console.log('not matched');
+    req.status(406).send("Error: IDが一致しません")
   }
 })
 
