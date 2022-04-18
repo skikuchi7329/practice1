@@ -14,10 +14,15 @@ const App = () => {
   return (
     <div className="App">
       <ul>
-      {list && list.map((i) => <li key={i.id}>{i.todo} | {i.id} | {i.status ? '✅': '☑️'}</li>)}
+        {list &&
+          list.map((i) => (
+            <li key={i.id}>
+              {i.todo} | {i.id} | {i.status ? "✅" : "☑️"}
+            </li>
+          ))}
       </ul>
     </div>
-  )
+  );
 };
 
 export default App;
