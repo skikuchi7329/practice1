@@ -5,7 +5,7 @@ const App = () => {
 
   useEffect(() => {
     fetch("http://localhost:3001/get_list")
-      .then((res) => response.json())
+      .then((res) => res.json())
       .then((result) => {
         setList(result.data);
       });
