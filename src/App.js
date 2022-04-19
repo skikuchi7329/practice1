@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Todo } from "./components/Todo";
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -14,12 +15,7 @@ const App = () => {
   return (
     <div className="App">
       <ul>
-        {list &&
-          list.map((i) => (
-            <li key={i.id}>
-              {i.todo} | {i.id} | {i.status ? "✅" : "☑️"}
-            </li>
-          ))}
+        {list && list.map(({id, todo, status}) => <Todo key={id} id={id} todo={todo} status={status} />)}
       </ul>
     </div>
   );
