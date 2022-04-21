@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Todo } from "./components/Todo";
 
@@ -5,11 +6,12 @@ const App = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/get_list")
-      .then((res) => res.json())
-      .then((result) => {
-        setList(result.data);
-      });
+  const axios = require('axios');
+
+  axios.get("http://localhost:3001/get_list")
+    .then((res) => {
+      setList(rest.data.data);
+    })
   }, []);
 
   return (
