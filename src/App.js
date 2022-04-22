@@ -1,18 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Todo } from "./components/Todo";
+const axios = require('axios');
 
 const App = () => {
   const [list, setList] = useState([]);
 
-  useEffect(() => {
-  const axios = require('axios');
+  const fetchData = useCallback(async () => {
+    const res = await axios.get("http://localhost:3001/get_list")
+    setList(res.data.data);
+  }, [])
 
-  axios.get("http://localhost:3001/get_list")
-    .then((res) => {
-      setList(res.data.data);
-    })
-  }, []);
+  useEffect(() => {
+    fetchData()
+  }, [fetchData]);
 
   return (
     <div className="App">
