@@ -10,7 +10,7 @@ const App = () => {
 
   axios.get("http://localhost:3001/get_list")
     .then((res) => {
-      setList(rest.data.data);
+      setList(res.data.data);
     })
   }, []);
 
