@@ -25,6 +25,11 @@ const App = () => {
     fetchData();
   };
 
+  const handleUpdate = async (id) => {
+    await axios.post("http;//localhost:3001/update_status", { "id": id})
+    fetchData();
+  }
+
   return (
     <div className="App">
       <input value={keyword} onChange={handleChange} />
@@ -32,7 +37,7 @@ const App = () => {
       <ul>
         {list &&
           list.map(({ id, todo, status }) => (
-            <Todo key={id} id={id} todo={todo} status={status} />
+            <Todo key={id} id={id} todo={todo} status={status} handleUpdate={()=>handleUpdate(id)} />
           ))}
       </ul>
     </div>
