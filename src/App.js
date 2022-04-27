@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { Todo } from "./components/Todo";
-const axios = require("axios");
+import { TodoApi } from './api/TodoApi';
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -8,7 +8,7 @@ const App = () => {
   const [keyword, setKeyword] = useState("Type Something");
 
   const fetchData = useCallback(async () => {
-    const res = await axios.get("http://localhost:3001/get_list");
+    const res = await TodoApi.getList();
     setList(res.data.data);
   }, []);
 
@@ -21,17 +21,17 @@ const App = () => {
   };
 
   const handlCreate = async () => {
-    await axios.post("http://localhost:3001/create", { "todo": keyword });
+    await TodoApi.create(keyword);
     fetchData();
   };
 
   const handleUpdate = async (id) => {
-    await axios.post("http://localhost:3001/status_update", { "id": id});
+    await TodoApi.changeStatus(id);
     fetchData();
   };
 
   const handleDelete = async (id) => {
-    await axios.post("http://localhost:3001/delete", {"id": id });
+    await TodoApi.delete(id);
     fetchData();
   }
 
