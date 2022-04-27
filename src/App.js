@@ -21,12 +21,12 @@ const App = () => {
   };
 
   const handlCreate = async () => {
-    await axios.post("http://localhost:3001/create", { todo: keyword });
+    await axios.post("http://localhost:3001/create", { "todo": keyword });
     fetchData();
   };
 
   const handleUpdate = async (id) => {
-    await axios.post("http;//localhost:3001/update_status", { "id": id})
+    await axios.post("http://localhost:3001/status_update", { "id": id})
     fetchData();
   }
 
