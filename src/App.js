@@ -26,7 +26,12 @@ const App = () => {
   };
 
   const handleUpdate = async (id) => {
-    await axios.post("http://localhost:3001/status_update", { "id": id})
+    await axios.post("http://localhost:3001/status_update", { "id": id});
+    fetchData();
+  };
+
+  const handleDelete = async (id) => {
+    await axios.post("http://localhost:3001/delete", {"id": id });
     fetchData();
   }
 
@@ -37,7 +42,7 @@ const App = () => {
       <ul>
         {list &&
           list.map(({ id, todo, status }) => (
-            <Todo key={id} id={id} todo={todo} status={status} handleUpdate={()=>handleUpdate(id)} />
+            <Todo key={id} id={id} todo={todo} status={status} handleUpdate={()=>handleUpdate(id)} handleDelete={()=>handleDelete(id)} />
           ))}
       </ul>
     </div>
